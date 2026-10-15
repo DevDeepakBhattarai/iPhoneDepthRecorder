@@ -137,7 +137,17 @@ The downloader retrieves `u2net_human_seg.onnx` from the rembg model release and
 
 ### 4. Install the Windows iOS build toolchain
 
-The default build script expects:
+The native-Windows toolchain used during development is [TheosWin](https://github.com/CacheW/TheosWin). Follow its upstream install instructions; the current quick-start is roughly:
+
+```powershell
+python -m pip install zstandard
+git clone https://github.com/CacheW/TheosWin.git
+cd TheosWin
+bash install.sh
+bash setup-extras.sh --all
+```
+
+Return to this repository after installation. The default build script expects:
 
 ```text
 C:\msys64\usr\bin\bash.exe
