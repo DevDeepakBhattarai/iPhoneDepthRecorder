@@ -1,6 +1,6 @@
 Package: com.deepak.depthrecorder
 Name: DepthRecorder
-Version: 0.7.2
+Version: 0.7.3
 Architecture: iphoneos-arm
 Description: RGB-D LiDAR video recorder with absolute UTC frame timestamps
 Maintainer: Deepak

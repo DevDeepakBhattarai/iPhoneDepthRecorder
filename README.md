@@ -2,9 +2,9 @@
 
 **LiDAR-assisted cinematic video for iPhone 12 Pro Max, with OBS-controlled recording, absolute UTC timestamps, USB transfer, and Windows post-processing.**
 
-> Experimental project. Tested on an iPhone 12 Pro Max (`iPhone13,4`) and a Windows recording workstation. Current source version: **0.7.2 (build 11)**.
+> Experimental project. Tested on an iPhone 12 Pro Max (`iPhone13,4`) and a Windows recording workstation. Current source version: **0.7.3 (build 12)**.
 
-**Validation status:** the 26 mm 4K RGB-D/LiDAR path, UTC recording package, USB transfer, renderer, and OBS script loading have been exercised on the development system. Build 11 replaces the earlier 13/65 switching approach with direct physical ultra-wide/telephoto sessions; that specific lens-switch change is build-validated and should be treated as experimental until the current IPA is re-sideloaded and exercised on-device.
+**Validation status:** the 26 mm 4K RGB-D/LiDAR path, UTC recording package, USB transfer, renderer, and OBS script loading have been exercised on the development system. Build 11 replaced the earlier 13/65 switching approach with direct physical ultra-wide/telephoto sessions. Build 12 fixes the OBS/usbmux control listener so the device-side TCP port is reachable through usbmux. These latest device-facing changes are build-validated and should be treated as experimental until build 12 is re-sideloaded and exercised end-to-end on-device.
 
 ![Platform](https://img.shields.io/badge/iPhone-12%20Pro%20Max-black)
 ![Host](https://img.shields.io/badge/Host-Windows-0078D4)
@@ -203,7 +203,7 @@ Switching to **13 mm** or **65 mm** intentionally disables LiDAR and the live DO
 
 ## OBS integration
 
-The OBS script controls recording without sending the 4K master through OBS.
+The OBS script controls recording without sending the 4K master through OBS. The app listens on its device-side control port so Apple's usbmux transport can reach it; requests are limited to the small `status` / `start_record` / `stop_record` protocol and require the expected client marker.
 
 ### Install
 

@@ -42,7 +42,11 @@
     addr.sin_len = sizeof(addr);
     addr.sin_family = AF_INET;
     addr.sin_port = htons(self.port);
-    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+    // usbmux's Connect request targets the device-side TCP port, not an app-loopback
+    // endpoint. Binding only 127.0.0.1 makes the service invisible to usbmux even
+    // while the app is running. Listen on device interfaces and keep the protocol
+    // surface intentionally tiny (status/start/stop + client marker).
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
     if (bind(fd, (struct sockaddr *)&addr, sizeof(addr)) != 0 || listen(fd, 4) != 0) {
         int code = errno;
         close(fd);
