@@ -337,18 +337,18 @@ Stamp editor-compatible timecode without re-encoding the source master:
 
 ```text
 .
-??? CaptureEngine.*                 AVFoundation capture + camera control
-??? RecordingSession.*              MOV/depth/UTC package writer
-??? PreviewRenderer.*               disposable live DOF preview
-??? RecorderViewController.*        camera UI
-??? RemoteControlServer.*           USB-mux control endpoint
-??? obs/                             OBS Lua + launcher
-??? tools/                           transfer, sync, inspect, render utilities
-??? RECORDING_FORMAT.md              .depthrec format specification
-??? THIRD_PARTY_NOTICES.md           upstream provenance/licenses
-??? build.ps1                        Windows/Theos build
-??? install-obs.ps1                  OBS script installer
-??? requirements.txt                 Python dependencies
+|-- CaptureEngine.*                 AVFoundation capture + camera control
+|-- RecordingSession.*              MOV/depth/UTC package writer
+|-- PreviewRenderer.*               disposable live DOF preview
+|-- RecorderViewController.*        camera UI
+|-- RemoteControlServer.*           USB-mux control endpoint
+|-- obs/                             OBS Lua + launcher
+|-- tools/                           transfer, sync, inspect, render utilities
+|-- RECORDING_FORMAT.md              .depthrec format specification
+|-- THIRD_PARTY_NOTICES.md           upstream provenance/licenses
+|-- build.ps1                        Windows/Theos build
+|-- install-obs.ps1                  OBS script installer
+`-- requirements.txt                 Python dependencies
 ```
 
 ## Security and privacy
