@@ -84,23 +84,48 @@ async def send_once(command: str, timeout: float = 3.0) -> dict[str, Any]:
 def try_launch_app(bundle_id: str, timeout: float = 25.0) -> dict[str, Any]:
     if not PMD_EXE.exists():
         return {"launched": False, "error": f"missing {PMD_EXE}"}
-    cmd = [
-        str(PMD_EXE), "developer", "dvt", "launch",
-        "--userspace", "--no-kill-existing", bundle_id,
+
+    attempts = [
+        [
+            str(PMD_EXE), "developer", "core-device", "launch-application",
+            "--userspace", "--no-kill-existing", bundle_id,
+        ],
+        [
+            str(PMD_EXE), "developer", "dvt", "launch",
+            "--userspace", "--no-kill-existing", bundle_id,
+        ],
     ]
     started = utc_ns()
-    try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
-        return {
-            "launched": proc.returncode == 0,
-            "returncode": proc.returncode,
-            "stdout": proc.stdout.strip(),
-            "stderr": proc.stderr.strip(),
-            "started_utc_ns": started,
-            "finished_utc_ns": utc_ns(),
-        }
-    except Exception as exc:
-        return {"launched": False, "error": str(exc), "started_utc_ns": started, "finished_utc_ns": utc_ns()}
+    results: list[dict[str, Any]] = []
+    for cmd in attempts:
+        try:
+            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+            item = {
+                "method": "core-device" if "core-device" in cmd else "dvt",
+                "returncode": proc.returncode,
+                "stdout": proc.stdout.strip(),
+                "stderr": proc.stderr.strip(),
+            }
+            results.append(item)
+            if proc.returncode == 0:
+                return {
+                    "launched": True,
+                    "method": item["method"],
+                    "attempts": results,
+                    "started_utc_ns": started,
+                    "finished_utc_ns": utc_ns(),
+                }
+        except Exception as exc:
+            results.append({
+                "method": "core-device" if "core-device" in cmd else "dvt",
+                "error": str(exc),
+            })
+    return {
+        "launched": False,
+        "attempts": results,
+        "started_utc_ns": started,
+        "finished_utc_ns": utc_ns(),
+    }
 
 
 async def connect_with_optional_launch(command: str, launch_if_needed: bool, startup_timeout: float) -> dict[str, Any]:
