@@ -1,0 +1,49 @@
+# Build output
+.theos/
+*.ipa
+*.app/
+Payload/
+packages/
+*.zip
+
+# Signing / Apple provisioning material
+*.mobileprovision
+*.p12
+*.pfx
+*.cer
+*.crt
+*.pem
+*.key
+*.csr
+
+# Python / local environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# ML model weights (download locally)
+models/*.onnx
+
+# Captures and generated media
+device-captures/
+obs-sync/
+*.depthrec/
+*.mov
+*.mp4
+*.mkv
+*.render.json
+*.log
+
+# Local secrets / machine config
+.env
+.env.*
+!.env.example
+*.user.json
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

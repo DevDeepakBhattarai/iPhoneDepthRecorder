@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleExecutable</key><string>DepthRecorder</string>
+    <key>CFBundleIdentifier</key><string>com.deepak.depthrecorder</string>
+    <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+    <key>CFBundleName</key><string>DepthRecorder</string>
+    <key>CFBundleDisplayName</key><string>Depth Recorder</string>
+    <key>CFBundlePackageType</key><string>APPL</string>
+    <key>CFBundleShortVersionString</key><string>0.7.2</string>
+    <key>CFBundleVersion</key><string>11</string>
+    <key>CFBundleSupportedPlatforms</key><array><string>iPhoneOS</string></array>
+    <key>LSRequiresIPhoneOS</key><true/>
+    <key>MinimumOSVersion</key><string>15.4</string>
+    <key>UILaunchScreen</key><dict/>
+    <key>UIDeviceFamily</key><array><integer>1</integer></array>
+    <key>NSCameraUsageDescription</key><string>Depth Recorder needs the camera to record synchronized RGB and LiDAR depth video.</string>
+    <key>NSMicrophoneUsageDescription</key><string>Depth Recorder needs the microphone for talking-head video audio.</string>
+    <key>UIFileSharingEnabled</key><true/>
+    <key>LSSupportsOpeningDocumentsInPlace</key><true/>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UIViewControllerBasedStatusBarAppearance</key><true/>
+</dict>
+</plist>

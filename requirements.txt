@@ -1,0 +1,4 @@
+numpy>=1.26
+opencv-python>=4.9
+onnxruntime>=1.17
+pymobiledevice3>=11.29
