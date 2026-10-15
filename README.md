@@ -63,7 +63,7 @@ For implementation details, see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 | **26 mm** | Main + LiDAR | Yes | Yes | Primary cinematic talking-head mode |
 | **65 mm** | Telephoto | No | No | Tight RGB-only shots |
 
-The 26 mm path has been validated at **3840?2160 / ~30 fps** with synchronized LiDAR depth. Full-sensor 4:3 capture is also available in settings when supported by the selected format.
+The 26 mm path has been validated at **3840x2160 / ~30 fps** with synchronized LiDAR depth. Full-sensor 4:3 capture is also available in settings when supported by the selected format.
 
 ## Recording package
 
@@ -71,11 +71,11 @@ Each take is stored on the phone as:
 
 ```text
 <timestamp>_<id>.depthrec/
-??? master.mov
-??? depth.bin
-??? frames.jsonl
-??? calibration.json
-??? manifest.json
+|-- master.mov
+|-- depth.bin
+|-- frames.jsonl
+|-- calibration.json
+`-- manifest.json
 ```
 
 For RGB-only 13/65 mm takes, `manifest.json` records `depth_available=false`; depth-dependent post-processing is intentionally skipped.
@@ -203,7 +203,7 @@ The OBS script controls recording without sending the 4K master through OBS.
 
 Then in OBS:
 
-1. Open **Tools ? Scripts**.
+1. Open **Tools -> Scripts**.
 2. Click **+**.
 3. Add:
 
@@ -234,8 +234,8 @@ By default, runtime data is stored under:
 
 ```text
 %USERPROFILE%\Videos\DepthRecorder\
-??? device-captures\
-??? obs-sync\
+|-- device-captures\
+`-- obs-sync\
 ```
 
 Override it with:
